@@ -4,7 +4,7 @@ var ctx = canvas.getContext('2d');
 var raf;
 var particles = [];
 var color = 0;
-var colors = ['cyan','blue','yellow','green','orange','red','purple'];
+var colors = ['cyan','yellow','yellow','green','orange','red','purple'];
 var mouseX;
 var mouseY;
 var mouseVX = 0;
@@ -16,7 +16,7 @@ var Particle = function() {
               y:(Math.random()*900)-(Math.random()*900)} ;
   this.velocity = {x: (0.6-Math.random())*2,
                    y: (0.6-Math.random())*2};
-  this.radius = 8;
+  this.radius = 3;
   this.color = colors[Math.floor(Math.abs(Math.random()*2))];
   this.draw = function() {
     ctx.beginPath();
@@ -66,16 +66,23 @@ function detectCollisions(p) {
 
 }
 
+var intro = 200;
     
 function draw() {
   ctx.clearRect(0,0, canvas.width, canvas.height);
+    if (intro > 0) {
+        intro -= 1;
+        ctx.fillStyle = "rgba(255,255,255,"+intro/100.+")";
+        ctx.font = '24pt Helvetica';
+        ctx.fillText("Move Mouse to Swat, Click to Attract",canvas.width/2. - 240,canvas.height/2.);
+    }
   for (i = 0; i< particles.length; i ++) {
       var p = particles[i];
       if (gravity == true) {
         p.velocity.x += (mouseX - p.pos.x)*0.0001;
         p.velocity.y += (mouseY - p.pos.y)*0.0001;
       } else if (p.pos.x < mouseX + 50 && p.pos.x > mouseX - 50 && p.pos.y < mouseY + 50 && p.pos.y > mouseY - 50) {
-          if (p.radius < 12) {
+          if (p.radius < 5) {
               p.radius += p.radius*0.3
           }
           if (p.velocity.x < 5) {
@@ -85,7 +92,7 @@ function draw() {
             p.velocity.y += p.velocity.y*0.05 - mouseVY*0.1;
           }
       } else {
-          if (p.radius > 8) {
+          if (p.radius > 3) {
               p.radius -= p.radius*0.1
           }
           if (p.velocity.x > 0.5) {
