@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded',function(){
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
+ctx.canvas.width  = window.innerWidth;
+ctx.canvas.height = window.innerHeight;
 var raf;
 var particles = [];
 var color = 0;
@@ -16,8 +18,9 @@ var Particle = function() {
               y:(Math.random()*900)-(Math.random()*900)} ;
   this.velocity = {x: (0.6-Math.random())*2,
                    y: (0.6-Math.random())*2};
-  this.radius = 3;
-  this.color = colors[Math.floor(Math.abs(Math.random()*2))];
+  this.radius = Math.min(3,Math.random()*10);
+    this.min_radius = Math.min(Math.random()*10,3);
+  this.color = colors[Math.floor(Math.abs(Math.random()*3))];
   this.draw = function() {
     ctx.beginPath();
     ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI*2, true);
@@ -92,7 +95,7 @@ function draw() {
             p.velocity.y += p.velocity.y*0.05 - mouseVY*0.1;
           }
       } else {
-          if (p.radius > 3) {
+          if (p.radius > p.min_radius) {
               p.radius -= p.radius*0.1
           }
           if (p.velocity.x > 0.5) {
