@@ -3,71 +3,113 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 var raf;
 var particles = [];
-var colors = ['lightgray','cyan','white'];
+var color = 0;
+var colors = ['cyan','blue','yellow','green','orange','red','purple'];
 var mouseX;
 var mouseY;
 var mouseVX = 0;
 var mouseVY = 0;
+var gravity = false;
     
 var Particle = function() {
-  this.x = (Math.random()*1600)-(Math.random()*1600);
-  this.y = (Math.random()*900)-(Math.random()*900);
-  this.vx = (0.6-Math.random())*2;
-  this.vy =  (0.6-Math.random())*2;
-  this.radius = Math.random()*2;
-  this.color = colors[Math.floor(Math.random()*5)];
+  this.pos = {x:(Math.random()*1600)-(Math.random()*1600),
+              y:(Math.random()*900)-(Math.random()*900)} ;
+  this.velocity = {x: (0.6-Math.random())*2,
+                   y: (0.6-Math.random())*2};
+  this.radius = 8;
+  this.color = colors[Math.floor(Math.abs(Math.random()*2))];
   this.draw = function() {
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
+    ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI*2, true);
     ctx.closePath();
     ctx.fillStyle = this.color;
     ctx.fill();
   };
 };
-
-for (i = 0; i < 5000; i++) { 
+    
+function reset() {
+particles=[]
+for (i = 0; i < 1000; i++) { 
     var p = new Particle();
     particles.push(p);
 }
+}
+    
+reset();
+
     
 canvas.addEventListener('mousemove',function(evt) {
     var scene = canvas.getBoundingClientRect();
-    x = evt.clientX - scene.left - 50;
-    y = evt.clientY - scene.top - 50;
+    x = evt.clientX - scene.left;
+    y = evt.clientY - scene.top;
     mouseVX = mouseX - x; 
     mouseVY = mouseY - y;
     mouseX = x;
     mouseY = y;
 },false);
     
+canvas.addEventListener('mousedown',function(evt) {
+    gravity = true;
+},false);
+canvas.addEventListener('mouseup',function(evt) {
+    gravity = false;
+},false);
+canvas.addEventListener('dblclick',function(evt) {
+    reset();
+},false);
+    
+canvas.addEventListener('wheel',function(evt) {
+    color = 1;
+},false);
+    
+function detectCollisions(p) {
+
+}
+
+    
 function draw() {
   ctx.clearRect(0,0, canvas.width, canvas.height);
   for (i = 0; i< particles.length; i ++) {
       var p = particles[i];
-      if (p.x < mouseX + 50 && p.x > mouseX - 50 && p.y < mouseY + 50 && p.y > mouseY - 50) {
-          if (p.radius < 3) {
+      if (gravity == true) {
+        p.velocity.x += (mouseX - p.pos.x)*0.0001;
+        p.velocity.y += (mouseY - p.pos.y)*0.0001;
+      } else if (p.pos.x < mouseX + 50 && p.pos.x > mouseX - 50 && p.pos.y < mouseY + 50 && p.pos.y > mouseY - 50) {
+          if (p.radius < 12) {
               p.radius += p.radius*0.3
           }
-          if (p.vx < 5) {
-            p.vx += p.vx*0.05 - mouseVX*0.1;
+          if (p.velocity.x < 5) {
+            p.velocity.x += p.velocity.x*0.05 - mouseVX*0.1;
           }
-          if (p.vy < 5) {
-            p.vy += p.vy*0.05 - mouseVY*0.1;
+          if (p.velocity.y < 5) {
+            p.velocity.y += p.velocity.y*0.05 - mouseVY*0.1;
           }
-          p.color = 'yellow';
       } else {
-          if (p.radius > 1) {
+          if (p.radius > 8) {
               p.radius -= p.radius*0.1
           }
-          if (p.vx > 0.5) {
-            p.vx -= p.vx*0.1
+          if (p.velocity.x > 0.5) {
+            p.velocity.x -= p.velocity.x*0.05
           }
-          if (p.vy > 0.5) {
-            p.vy -= p.vy*0.1
+          if (p.velocity.y > 0.5) {
+            p.velocity.y -= p.velocity.y*0.05
           }
-        p.color = 'cyan';
       }
-      
+      for (z = 0; z < particles.length; z ++) {
+        var j = particles[z]
+        if (z != i) {
+            if (j.pos.x < p.pos.x + p.radius*1.5 && j.pos.x > p.pos.x-p.radius*0.5 && j.pos.y < p.pos.y + p.radius*1.5 && j.pos.y > p.pos.y-p.radius*0.5) {
+                j.color = p.color;
+                oldvx = p.velocity.x;
+                oldvy = p.velocity.y;
+                p.velocity.x = -p.velocity.x + j.velocity.x*0.5;
+                p.velocity.y = -p.velocity.y + j.velocity.y*0.5;
+                j.velocity.x = -j.velocity.x + oldvx*0.5;
+                j.velocity.y = -j.velocity.y + oldvy*0.5;
+            }
+        }
+    }
+      //p.color = colors[color];
       p.draw();
       /*for (z=0; z< particles.length; z++){
         if (p.x < particles[z].x + particles[z].radius && p.x > particles[z].x && p.y < particles[z].y + particles[z].radius && p.y > particles[z].y) {
@@ -76,14 +118,15 @@ function draw() {
           p.color = 'green';
       }
       }*/
-      p.x += p.vx;
-      p.y += p.vy;
       
-      if (p.y + p.vy > canvas.height || p.y + p.vy < 0) {
-        p.vy = -p.vy;
+      p.pos.x += p.velocity.x;
+      p.pos.y += p.velocity.y;
+      
+      if (p.pos.y + p.velocity.y > canvas.height || p.pos.y + p.velocity.y < 0) {
+        p.velocity.y = -p.velocity.y;
       }
-      if (p.x + p.vx > canvas.width || p.x + p.vx < 0) {
-        p.vx = -p.vx;
+      if (p.pos.x + p.velocity.x > canvas.width || p.pos.x + p.velocity.x < 0) {
+        p.velocity.x = -p.velocity.x;
       }    
   }
   raf = window.requestAnimationFrame(draw);
