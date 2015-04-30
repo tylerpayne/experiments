@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: lightcoral;
     perspective: 500px;
     perspective-origin: 50% 50%
 }
@@ -30,26 +30,26 @@ div {
 
 .front {
     position: absolute;
-    
+    background-color: #3A95BB;
 }
 
 .back {
     position: absolute;
     transform: translateZ(-100px);
-    background-color: aliceblue;
+    background-color: #62EECB;
 
 }
 
 .left {
      position: absolute;
     transform: translateX(-50px) translateZ(-50px) rotateY(90deg);
-    background-color: coral;
+    background-color: #BB3A51;
 }
 
 .right {
     position: absolute;
     transform: translateX(50px) translateZ(-50px) rotateY(90deg);
-    background-color: darkmagenta;
+    background-color: #6E8088;
 }
 
 .top {

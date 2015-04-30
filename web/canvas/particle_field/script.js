@@ -6,7 +6,7 @@ ctx.canvas.height = window.innerHeight;
 var raf;
 var particles = [];
 var color = 0;
-var colors = ['cyan','yellow','yellow','green','orange','red','purple'];
+var colors = ['#00F7FE','#FE6D40','#FE6D40','green','orange','red','purple'];
 var mouseX;
 var mouseY;
 var mouseVX = 0;
@@ -72,7 +72,7 @@ function draw() {
     if (intro > 0) {
         intro -= 1;
         ctx.fillStyle = "rgba(255,255,255,"+intro/100.+")";
-        ctx.font = '24pt Helvetica';
+        ctx.font = '24pt Helvetica-Light';
         ctx.fillText("Move Mouse to Swat, Click to Attract",canvas.width/2. - 240,canvas.height/2.);
     }
   for (i = 0; i< particles.length; i ++) {

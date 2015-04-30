@@ -1,0 +1,126 @@
+body {
+    background-color: #F7FCF7;
+    perspective: 500px;
+    perspective-origin: 50% 50%
+}
+
+div {
+    width: 100px;
+    height: 100px;
+}
+
+
+#cube {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50% 50%;
+    transform: rotateX(-15deg) rotateY(45deg) translateY(-25px);
+    transition-property: all;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in-out;
+}
+
+#cube:hover {
+    transform: rotateX(0deg) rotateY(0deg) translateX(-75px) translateZ(-1000px);
+}
+
+.front {
+    transform-origin: 50% 50% 50%;
+    position: absolute;
+    background-color: #D40193;
+    transition-property: all;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in-out;
+}
+
+#cube:hover .front {
+    
+    transform: translate3d(125px,0px,0px);
+    border-radius: 50px;
+
+}
+
+.back {
+    transform-origin: 50% 50% 50%;
+    position: absolute;
+    transform: translateZ(-100px);
+    background-color: #12AAAE;
+    transition-property: all;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in-out;
+
+}
+
+#cube:hover .back {
+    
+    transform: translate3d(-125px,-125px,0);
+    border-radius: 50px;
+
+}
+
+.left {
+    transform-origin: 50% 50% 50%;
+     position: absolute;
+    transform: translateX(-50px) translateZ(-50px) rotateY(90deg);
+    background-color: #940167;
+    transition-property: all;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in-out;
+}
+
+#cube:hover .left {
+    
+    transform: translateX(-125px) translateZ(0px) rotateY(0deg);
+    border-radius: 50px;
+
+}
+
+.right {
+    position: absolute;
+    transform: translateX(50px) translateZ(-50px) rotateY(90deg);
+    background-color: #0E8588;
+    transition-property: all;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in-out;
+}
+
+#cube:hover .right {
+    
+    transform: translate3d(125px,-125px,0) rotateY(0deg);
+    border-radius: 50px;
+
+}
+
+.top {
+    position: absolute;
+    transform: translateY(-50px) translateZ(-50px) rotateX(90deg);
+    background-color: #BB0181;
+    transition-property: all;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in-out;
+}
+
+#cube:hover .top {
+    
+    transform: translate3d(0,-125px,0)rotateX(0deg);
+    border-radius: 50px;
+
+}
+
+.bottom {
+    position: absolute;
+    transform: translateY(50px) translateZ(-50px) rotateX(90deg);
+    background-color: #119EA1;
+    transition-property: all;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in-out;
+}
+
+#cube:hover .bottom {
+    
+    transform: translate3d(0,0,0) rotateX(0deg);
+    border-radius: 50px;
+
+}

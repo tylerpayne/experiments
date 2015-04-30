@@ -19,8 +19,8 @@ document.addEventListener("mousemove",function(evt) {
     x = evt.clientX - window.innerWidth/2.;
     y = evt.clientY - window.innerHeight/2.;
    // console.log(x,y);
-    x = x/2.;
-    y = y/2.;
+    x = x/3.;
+    y = y/3.;
     
     updatePerspective();    
 
