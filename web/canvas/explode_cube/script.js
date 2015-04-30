@@ -1,16 +1,17 @@
 document.addEventListener('DOMContentLoaded',function() {
 
 var cube = document.getElementById("cube");
-var x=45;
-
-var sides = ['front','back','left','right','top','bottom'];
-   /* 
-document.addEventListener("mousemove",function(evt) {
+ 
+cube.addEventListener("click",function(evt) {
+    var anim = cube.className.indexOf('animate');
+    if (anim == -1) {
+        cube.className = cube.className + "animate";
+    } else {
+        cube.className = cube.className.replace("animate",'');
+    }
     
-    cube.style.transform = "rotateX(-15deg) translateY(-25px) rotateY("+x+"deg)";   
-    x ++;
-
-});*/
+    
+});
     
     
 

@@ -12,18 +12,18 @@ div {
 
 #cube {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform-style: preserve-3d;
     transform-origin: 50% 50% 50%;
-    transform: rotateX(-15deg) rotateY(45deg) translateY(-25px);
+    transform: rotateX(-15deg) rotateY(45deg);
     transition-property: all;
     transition-duration: 1.5s;
     transition-timing-function: ease-in-out;
 }
 
-#cube:hover {
-    transform: rotateX(0deg) rotateY(0deg) translateX(-75px) translateZ(-1000px);
+#cube.animate {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(-1000px);
 }
 
 .front {
@@ -35,7 +35,7 @@ div {
     transition-timing-function: ease-in-out;
 }
 
-#cube:hover .front {
+#cube.animate .front {
     
     transform: translate3d(125px,0px,0px);
     border-radius: 50px;
@@ -53,7 +53,7 @@ div {
 
 }
 
-#cube:hover .back {
+#cube.animate .back {
     
     transform: translate3d(-125px,-125px,0);
     border-radius: 50px;
@@ -70,7 +70,7 @@ div {
     transition-timing-function: ease-in-out;
 }
 
-#cube:hover .left {
+#cube.animate .left {
     
     transform: translateX(-125px) translateZ(0px) rotateY(0deg);
     border-radius: 50px;
@@ -86,7 +86,7 @@ div {
     transition-timing-function: ease-in-out;
 }
 
-#cube:hover .right {
+#cube.animate .right {
     
     transform: translate3d(125px,-125px,0) rotateY(0deg);
     border-radius: 50px;
@@ -102,7 +102,7 @@ div {
     transition-timing-function: ease-in-out;
 }
 
-#cube:hover .top {
+#cube.animate .top {
     
     transform: translate3d(0,-125px,0)rotateX(0deg);
     border-radius: 50px;
@@ -118,7 +118,7 @@ div {
     transition-timing-function: ease-in-out;
 }
 
-#cube:hover .bottom {
+#cube.animate .bottom {
     
     transform: translate3d(0,0,0) rotateX(0deg);
     border-radius: 50px;
