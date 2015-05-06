@@ -29,7 +29,7 @@ section {
 
 .front {
     position: absolute;
-    background-color: #D40193;
+    background-color: #DF5A49;
     transition-property: all;
     transition-duration: 1.5s;
     transition-timing-function: ease-in-out;
@@ -45,7 +45,7 @@ section {
 .back {
     position: absolute;
     transform: translateZ(-100px);
-    background-color: #12AAAE;
+    background-color: #45B29D;
     transition-property: all;
     transition-duration: 1.5s;
     transition-timing-function: ease-in-out;
@@ -62,7 +62,7 @@ section {
 .left {
      position: absolute;
     transform: translateX(-50px) translateZ(-50px) rotateY(90deg);
-    background-color: #940167;
+    background-color: #EFC94C;
     transition-property: all;
     transition-duration: 1.5s;
     transition-timing-function: ease-in-out;
@@ -78,7 +78,7 @@ section {
 .right {
     position: absolute;
     transform: translateX(50px) translateZ(-50px) rotateY(90deg);
-    background-color: #0E8588;
+    background-color: #334D5C;
     transition-property: all;
     transition-duration: 1.5s;
     transition-timing-function: ease-in-out;
@@ -94,7 +94,7 @@ section {
 .top {
     position: absolute;
     transform: translateY(-50px) translateZ(-50px) rotateX(90deg);
-    background-color: #BB0181;
+    background-color: #E27A3F;
     transition-property: all;
     transition-duration: 1.5s;
     transition-timing-function: ease-in-out;
@@ -110,7 +110,7 @@ section {
 .bottom {
     position: absolute;
     transform: translateY(50px) translateZ(-50px) rotateX(90deg);
-    background-color: #119EA1;
+    background-color: #45B29D;
     transition-property: all;
     transition-duration: 1.5s;
     transition-timing-function: ease-in-out;

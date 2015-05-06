@@ -1,0 +1,100 @@
+body {
+    
+    background-color: #F7F7F7;
+    padding: 0;
+    margin: 0;
+    
+}
+
+#container {
+    perspective: 500px;
+    perspective-origin: 50% 50%;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: 200px;
+    height: 100%;
+    transform: translate(-50%,0);
+
+}
+
+#unfold {
+    z-index: 10;
+    position: relative;
+    background-color: #DF5A49;
+    width: 200px;
+    height: 65px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0px 0px 40px rgba(0,0,0,0.3);
+
+}
+
+.fold {
+    box-shadow: 0px 0 40px rgba(0,0,0,0.3);
+    background-color: #DF5A49;
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.3),rgba(0,0,0,0));
+    background-size: auto 400%;
+    background-position: 0 100%;
+    position: relative;
+    top: 0;
+    left: 50%;
+    width: 200px;
+    height: 65px;
+    transform:translate(-50%,0)rotateX(-180deg);
+    transform-origin: 100% 0%;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in;
+    
+    
+}
+
+.fold.open {
+    
+    -webkit-animation-name: 'unfolding';
+    -webkit-animation-duration: 0.35s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: cubic-bezier(0.3, 0, 0.35, 1);
+
+}
+
+.fold.open.last {
+    
+    -webkit-animation-name: 'unfolding';
+    -webkit-animation-duration: 0.35s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+
+.fold.close {
+    
+    -webkit-animation-name: 'folding';
+    -webkit-animation-duration: 0.35s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
+
+}
+
+@-webkit-keyframes unfolding {
+    0%{background-position: 0 100%;}
+    50%{background-position: 0 0;}
+    100%{background-position: 0 100%;transform:translate(-50%,0) rotateX(0deg); background-image: none;}
+}
+
+@-webkit-keyframes folding {
+    0%{background-position: 0 100%;transform:translate(-50%,0) rotateX(0deg);}
+    100% {transform:translate(-50%,0)rotateX(-180deg);}
+}

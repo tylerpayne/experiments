@@ -6,7 +6,11 @@ ctx.canvas.height = window.innerHeight;
 var raf;
 var particles = [];
 var color = 0;
-var colors = ['#00F7FE','#FE6D40','#FE6D40','green','orange','red','purple'];
+var colors = ['#DF5A49',
+        '#45B29D',
+        '#EFC94C',
+        '#E27A3F',
+        '#DF5A49'];
 var mouseX;
 var mouseY;
 var mouseVX = 0;

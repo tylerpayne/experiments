@@ -1,0 +1,20 @@
+body {
+    background-color: #F7F7F7;
+    padding: 0;
+    margin: 0;
+}
+
+.block {
+    float: left;
+    transition-duration: 0.65s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.45, 0, .25, 1.2);
+}
+.row {
+
+    float: left;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.45, 0, .25, 1.2);
+
+}

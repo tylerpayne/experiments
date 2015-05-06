@@ -1,0 +1,38 @@
+body {
+    
+    background-color: #334D5C;
+    padding: 0;
+    margin: 0;
+    perspective: 500px;
+    perspective-origin: 50% 50%;
+    
+}
+
+.wall {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #334D5C;
+
+}
+
+.stalk {
+
+    width: 100px;
+    height: 300px;
+    position: absolute;
+    transform-origin: bottom;
+    
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(.4, -0.3, .6, 1.3)
+
+}
+
+.stalk:hover {
+
+    width: 100px;
+    height: 500px;
+    position: absolute;
+
+}

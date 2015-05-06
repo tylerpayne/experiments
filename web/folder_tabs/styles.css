@@ -1,0 +1,52 @@
+body {
+    background-color: #DF5A49;
+    padding: 0;
+    margin: 0;
+}
+
+.tab {
+    background-color: coral;
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    margin-bottom: -10;
+    box-shadow:  0px 0px 15px rgba(0,0,0,0.15);
+    transition-duration: 0.75s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.45, 0, .25, 1.2);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.tab:first-child {
+
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+
+}
+
+h2.label {
+
+    color: inherit;
+    text-decoration-style: double;
+    margin-left: 30px;
+    margin-top: 13px;
+    position: absolute;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-stretch: ultra-expanded;
+    text-shadow: inherit;
+
+}
+
+/*
+
+'#334D5C',
+        '#45B29D',
+        '#EFC94C',
+        '#E27A3F',
+        '#DF5A49',
+
+
+*/

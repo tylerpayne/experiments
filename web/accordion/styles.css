@@ -1,0 +1,76 @@
+body {
+    
+    margin: 0;
+
+}
+
+#container {
+    perspective: 1000px;
+    perspective-origin: -5% 50%;
+    height: 100%;
+    width: 100%;
+
+}
+
+.fold {
+    left:300px;
+    height: 100%;
+    width: 100px;
+    float: left;
+    transition-duration: 0.01s;
+    transition-property: all;
+    transition-timing-function: linear;
+
+}
+
+
+
+.even {
+    transform-origin: 0% 50%;
+    background-image: -webkit-linear-gradient(right,rgba(0,0,0,0.5),rgba(0,0,0,0));
+    background-size: 200% auto;
+    background-position: 100% 0;
+}
+
+.odd {
+    transform-origin: 0% 50%;
+    background-image: -webkit-linear-gradient(right,rgba(0,0,0,0.5),rgba(0,0,0,0));
+    background-size: 200% auto;
+    background-position: 100% 0;
+    
+}
+/*
+.evenAnimate {
+    -webkit-animation-name: 'evenexpand';
+    -webkit-animation-duration:  0.75s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-timing-function: linear;
+}
+
+.oddAnimate {
+    -webkit-animation-name: 'oddexpand';
+    -webkit-animation-duration:  0.75s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-timing-function: linear;
+}
+
+
+@-webkit-keyframes oddexpand {
+
+    0% {}
+    100% {transform: rotateY(0deg);background-position: 0 0;}
+
+}
+
+@-webkit-keyframes evenexpand {
+
+    0% {}
+    50% {transform: translateX(42.3%) rotateY(-225deg)}
+    100% {transform: translateX(100%) rotateY(-180deg); background-position: 0 0;}
+
+}
+*/

@@ -1,3 +1,9 @@
+body {
+
+margin: 0;
+
+}
+
 #canvas {
 
     width:100%;
@@ -7,6 +13,12 @@
 
 body {
 
-    background-color: #003D3F;
+    background-color: #F7F7F7;
 
 }
+
+/*'#334D5C',
+        '#45B29D',
+        '#EFC94C',
+        '#E27A3F',
+        '#DF5A49',
